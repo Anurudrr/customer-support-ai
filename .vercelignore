@@ -3,8 +3,11 @@
 venv
 __pycache__
 *.pyc
+requirements.txt
+requirements-dev.txt
 outputs/
 data/raw/
 models/intent_classifier/
 tests/
 notebooks/
+reports/
