@@ -4,6 +4,9 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-brightgreen.svg)](https://customer-support-ai-olive.vercel.app)
+
+**🌐 Live Production Demo:** [https://customer-support-ai-olive.vercel.app](https://customer-support-ai-olive.vercel.app)
 
 ---
 
