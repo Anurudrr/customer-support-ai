@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Customer Support NLP System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col items-center p-4 md:p-8">
+
+  <div class="w-full max-w-3xl space-y-6">
+    <!-- Header -->
+    <header class="text-center space-y-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+        AI NLP Customer Support
+      </div>
+      <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+        Customer Support Chatbot & Triage
+      </h1>
+      <p class="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
+        Multi-intent classification, real-time anger/urgency detection, and rule-based escalation engine.
+      </p>
+    </header>
+
+    <!-- Main Card -->
+    <div class="bg-slate-800/80 backdrop-blur border border-slate-700/60 rounded-2xl p-6 shadow-2xl space-y-5">
+      
+      <!-- Input Area -->
+      <div>
+        <label for="messageInput" class="block text-xs font-medium text-slate-300 mb-2">Customer Query / Message</label>
+        <textarea
+          id="messageInput"
+          rows="3"
+          placeholder="e.g. My refund still hasn't arrived and this is ridiculous!"
+          class="w-full px-4 py-3 bg-slate-950 border border-slate-700 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none text-sm"
+        ></textarea>
+      </div>
+
+      <!-- Quick Demo Buttons -->
+      <div class="space-y-2">
+        <span class="text-xs text-slate-400 font-medium">Try quick test messages:</span>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="setQuery('My refund still hasn\'t arrived!')" class="text-xs bg-slate-700/60 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600/40 transition">
+            💳 Refund Query
+          </button>
+          <button onclick="setQuery('App keeps crashing every time I open it')" class="text-xs bg-slate-700/60 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600/40 transition">
+            📱 App Crash
+          </button>
+          <button onclick="setQuery('This is absolutely RIDICULOUS! I was charged twice!')" class="text-xs bg-red-950/40 hover:bg-red-900/50 text-red-300 px-3 py-1.5 rounded-lg border border-red-700/40 transition">
+            🔥 Angry Billing
+          </button>
+          <button onclick="setQuery('I forgot my password and can\'t login')" class="text-xs bg-slate-700/60 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600/40 transition">
+            🔐 Account Login
+          </button>
+          <button onclick="setQuery('Could you please add dark mode?')" class="text-xs bg-slate-700/60 hover:bg-slate-700 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-600/40 transition">
+            💡 Feature Request
+          </button>
+          <button onclick="setQuery('Love your service, thank you so much!')" class="text-xs bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 px-3 py-1.5 rounded-lg border border-emerald-700/40 transition">
+            ⭐ Positive Feedback
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button
+        id="submitBtn"
+        onclick="processMessage()"
+        class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-semibold rounded-xl text-white text-sm shadow-lg shadow-blue-500/20 transition flex items-center justify-center gap-2"
+      >
+        <span id="btnText">Analyze & Generate Reply</span>
+        <svg id="btnSpinner" class="hidden animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+      </button>
+
+      <!-- Results Area -->
+      <div id="resultsCard" class="hidden pt-4 border-t border-slate-700/60 space-y-4">
+        
+        <!-- Metrics Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="bg-slate-950/60 border border-slate-700/40 p-3.5 rounded-xl">
+            <span class="text-xs text-slate-400 block mb-1">Predicted Intent</span>
+            <span id="resIntent" class="text-sm font-semibold text-blue-400 capitalize">--</span>
+          </div>
+          <div class="bg-slate-950/60 border border-slate-700/40 p-3.5 rounded-xl">
+            <span class="text-xs text-slate-400 block mb-1">Confidence Score</span>
+            <span id="resConfidence" class="text-sm font-semibold text-slate-200">--</span>
+            <div class="w-full bg-slate-800 rounded-full h-1.5 mt-2 overflow-hidden">
+              <div id="confBar" class="bg-blue-500 h-1.5 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="bg-slate-950/60 border border-slate-700/40 p-3.5 rounded-xl">
+            <span class="text-xs text-slate-400 block mb-1">Escalation Status</span>
+            <span id="resEscalation" class="text-sm font-semibold inline-flex items-center gap-1.5">--</span>
+          </div>
+        </div>
+
+        <!-- Escalation Details -->
+        <div id="escalationReasonBox" class="hidden bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs p-3 rounded-xl">
+          <span class="font-semibold block mb-0.5">⚠️ Escalation Triggered:</span>
+          <span id="resReason"></span>
+          <div id="resSignals" class="mt-1 text-amber-300/80"></div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="bg-slate-950 border border-slate-700/60 rounded-xl p-4 space-y-1.5">
+          <span class="text-xs font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Bot Reply
+          </span>
+          <p id="resReply" class="text-sm text-slate-200 leading-relaxed"></p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-slate-500">
+      AI-Powered Customer Support System • Pretrained NLP Classifier & Decision Logic
+    </footer>
+  </div>
+
+  <script>
+    function setQuery(text) {
+      document.getElementById('messageInput').value = text;
+      processMessage();
+    }
+
+    async function processMessage() {
+      const msg = document.getElementById('messageInput').value.trim();
+      if (!msg) return;
+
+      const btn = document.getElementById('submitBtn');
+      const btnText = document.getElementById('btnText');
+      const spinner = document.getElementById('btnSpinner');
+      const resultsCard = document.getElementById('resultsCard');
+
+      btn.disabled = true;
+      btnText.innerText = 'Analyzing...';
+      spinner.classList.remove('hidden');
+
+      try {
+        const response = await fetch('/api/index', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+
+        const data = await response.json();
+        
+        // Populate results
+        document.getElementById('resIntent').innerText = data.intent.replace(/_/g, ' ');
+        const pct = Math.round(data.confidence * 100);
+        document.getElementById('resConfidence').innerText = `${(data.confidence).toFixed(4)} (${pct}%)`;
+        document.getElementById('confBar').style.width = `${pct}%`;
+
+        const escElem = document.getElementById('resEscalation');
+        const reasonBox = document.getElementById('escalationReasonBox');
+        
+        if (data.should_escalate) {
+          escElem.innerHTML = '<span class="text-amber-400">⚠️ Escalated</span>';
+          reasonBox.classList.remove('hidden');
+          document.getElementById('resReason').innerText = data.escalation_reason || data.triggered_rule;
+          
+          if (data.anger_signals && data.anger_signals.length > 0) {
+            document.getElementById('resSignals').innerText = 'Signals: ' + data.anger_signals.join(', ');
+          } else {
+            document.getElementById('resSignals').innerText = '';
+          }
+        } else {
+          escElem.innerHTML = '<span class="text-emerald-400">✅ Handled by Bot</span>';
+          reasonBox.classList.add('hidden');
+        }
+
+        document.getElementById('resReply').innerText = data.reply;
+        resultsCard.classList.remove('hidden');
+
+      } catch (err) {
+        alert('Error connecting to backend API: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btnText.innerText = 'Analyze & Generate Reply';
+        spinner.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>

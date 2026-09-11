@@ -1,0 +1,201 @@
+message,intent,should_escalate
+just a note — send me a corrected invoice please help!,billing_issue,False
+please help — i can't send messages — they just fail ugh.,technical_issue,False
+issue: you clearly don't care about your customers AT ALL help!,complaint_angry,False
+question: why did you charge my card twice?!,billing_issue,False
+please remove the late payment charge ugh.,billing_issue,False
+your company is a disgrace — i'll be leaving a review help!,complaint_angry,False
+please add a way to archive old messages thank.s,feature_request,True
+update: i can't log in from a new device.,account_access,False
+"hello, i'd love real-time collaboration features ugh.",feature_request,True
+the search results aren't very accurate.,complaint_normal,False
+"fyi, you charegd me after i requested cancellation ugh.",billing_issue,False
+"fyi, thank you — this solved my problem instantly asap!",positive,False
+please help — my promo code didn't apply to my bill thanks.,billing_issue,False
+update: i was charged twice for the same order !!,billing_issue,False
+every interaction with your team has been a disaster help!,complaint_angry,False
+question: you've lost me as a customer with this appalling service.,complaint_angry,True
+"urgent: i want a full refund, not a credit ugh.",billing_issue,False
+please help — incredibly happy with the service — truly top tier,positive,False
+update: the dashboard takes a whil eto load every time.,complaint_normal,False
+"fyi, refund hasn't shown u pin my bank yet.",billing_issue,False
+issue: it would be helpful to have a guest access mode :(,feature_request,True
+update: i was sceptical at first but i'm absolutely converted help!,positive,False
+question: can you add a print option to reports?,feature_request,True
+"hi, i'm being charged for something i cancelled :(",billing_issue,False
+issue: i rarely write reviesw but you deserve it — 5 stars! :(,positive,False
+"hello, i'd love a feature to pin important messages asap!",feature_request,True
+issue: the sync isn't working between my devices !!,technical_issue,False
+update: i need to merge two accounts ugh.,account_access,False
+"hey, you really listen to user feedback and it shows.",positive,False
+"hi, your service is an insult to paying customers!!! thanks.",complaint_angry,False
+the download fails every time help!,technical_issue,False
+i demand immediate action — this is unacceptable!!! thanks.,complaint_angry,True
+update: best customer support experience i've ever had ugh.,positive,False
+"hello,w orst decision i ever made was signing up with you asap!",complaint_angry,False
+update: it would help to have a reading mode help!,feature_request,True
+"fyi, i want a full refund, not a credit",billing_issue,False
+"fyi, please add a custom notification sound option!",feature_request,True
+the filter options aren't working,technical_issue,False
+"hi, my account was deactivated by mistake.",account_access,False
+"fyi, the interface is a bit confusing to navigate :(",complaint_normal,False
+"hey, the email notifications ar etoo frequent!",complaint_normal,False
+"fyi, i want my money back now :(",billing_issue,False
+issue: app keeps crashing every time i open it please.,technical_issue,False
+update: my account is locked — please help :(,account_access,False
+update: i love how responsive the team is to user suggestions!,positive,False
+how do i delete my account?!,account_access,False
+"hey, the support team was incredibly helpful and friendly.",positive,False
+question: i'd love to see version history for documents help!,feature_request,True
+question: please add a custom notification sound option help!,feature_request,True
+"hello, can you add a print option to reports? tahnks.",feature_request,True
+issue: please add na option to hide the sidebar help!,feature_request,True
+i didn't receive the password reset email ugh.,account_access,False
+update: genuinely the best app in its category help!,positive,False
+"fyi, the sync isn't working between my devices asap!",technical_issue,False
+"hey, my account is showing as inactive",account_access,False
+"fyi, i changed my password but it's not working please.",account_access,False
+please help — myr efund still hasn't arrived help!,billing_issue,False
+"hi, the api returns a 503 error thanks.",technical_issue,False
+the camera feature crashes the app instantly help!,technical_issue,False
+"fyi, i'd like to see bettre keyboard shortcuts.",complaint_normal,False
+"hi, i want to know why i was charged a cancellation fee help!",billing_issue,False
+"hey, there's too much advertising in the interface!",complaint_normal,False
+this is absolutely ridiculous! i've been waiting weeks!!,complaint_angry,True
+issue: i need to recover my username.,account_access,False
+issue: i can't believe how awful this experience has been!!!!,complaint_angry,True
+"hey, you've restored my faith in good customer service! asap!",positive,False
+please help — absolutely horrible experience from start to finish!!! :(,complaint_angry,True
+"hi, i'd love to see version history for documents please.",feature_request,True
+"hi, i didn't receive the password reset email help!",account_access,False
+"issue: top-notch everything — service, product, and support asap!",positive,False
+issue: i need to dispute a charge from last month.,billing_issue,False
+just a note — notifications aren't working on my phone please.,technical_issue,False
+update: why is my bill higher than expected? asap!,billing_issue,False
+question: your billing system has an error ugh.,billing_issue,False
+just a note — absolutely horrible experience from start to finish!!! :(,complaint_angry,True
+"hey, i don't like the new design at all ugh.",complaint_normal,False
+urgent: your app is the best investment i've made all year,positive,False
+"hi, the new update removed features i relied on !!",complaint_normal,False
+"hey, i DEMAND a full refund for this disaster of a service :(",complaint_angry,False
+"hey, i found a bug on the checkout page!",technical_issue,False
+urgent: can you add a split view for multitasking? asap!,feature_request,True
+issue: please add a night mode that turns on automatically!,feature_request,True
+"fyi, the export feature isn't generating the file asap!",technical_issue,False
+"hello, your company is a disgrace — i'll be leaving a review",complaint_angry,False
+question: i'm getting a 404 error on a page thatu sed to work !!,technical_issue,False
+just a note — my account shows zero history but i've been using it for years !!,account_access,False
+i need temporary acces swhile i recover my account,account_access,False
+"hello, the app could use some polish in the settings page!",complaint_normal,False
+question: please hlep me regain access to my account.,account_access,False
+question: HOW IS THIS STILL NOT FIXED?! IT'S BEEN DAYS!!!.,complaint_angry,False
+issue: can you add auto-save more frequently? help!,feature_request,True
+question: STOP IGNORING ME — I NEED THIS FIXED NOW!!! asap!,complaint_angry,False
+"ih, the app doesn't remember my preferences please.",complaint_normal,False
+just a note — i'd love to see a built-in time tracker help!,feature_request,True
+"hey, ogt a blank white screen after login !!",technical_issue,False
+just a note — the performance has degraded since last month help!,complaint_normal,False
+"hello, you have wasted hours of my time and it's unacceptable please.",complaint_angry,True
+"hi, my free trial ended but you charged me without warning",billing_issue,False
+question: i found a bug on the checkout page.,technical_issue,False
+issue: please add a way to archive old messages :(,feature_request,True
+issue: incredibly fast support — issue resolved in minutes! please.,positive,False
+"hey, can you add support for webp images? !!",feature_request,True
+just a note — your team really went the extra mile for me !!,positive,False
+can you add custom report templates?,feature_request,True
+"fyi, i'm getting an error message on login thanks.",technical_issue,False
+"fyi, i need temporary access while i recover my account !!",account_access,False
+i am completely fed up with your terrible service please.,complaint_angry,True
+"fyi, please add a night mode that turns on automatically thanks.",feature_request,True
+just a note — the download fails every time,technical_issue,False
+"hi, how long does account recovery take?.",account_access,False
+just a note — send me a corrected invoice please :(,billing_issue,False
+question: got a blank white screen after login please.,technical_issue,False
+just a note — i can't remember my login email asap!,account_access,False
+question: it would be nice to have offline mode ugh.,complaint_normal,False
+please help — you saved me so much time — thank you so much! help!,positive,False
+"hi, it would be helpful to have a guset access mode",feature_request,True
+question: i need to recover my username !!,account_access,False
+"hey, i need to reset my password.",account_access,False
+"hello, i want to know why i was charged a cancellation fee",billing_issue,False
+there are too many unnecessary notifications asap!,complaint_normal,False
+"hello, the confirmation email never arrived help!",technical_issue,False
+"hey, this charge is incorrect — fix it help!",billing_issue,False
+the search results aren't very accurate,complaint_normal,False
+isuse: i'm writing a formal complaint letter !!,complaint_angry,False
+urgent: i need to close my account :(,account_access,False
+"hey, the verification code never arrives",account_access,False
+issue: the video player won't loda please.,technical_issue,False
+the search feature is completely broken help!,technical_issue,False
+urgent: i need help accessing my team account,account_access,False
+urgent: i can't verify my identity to log in thanks.,account_access,False
+update: i can't send messages — they just fail :(,technical_issue,False
+update: happy to be a long-term customer of yours!,positive,False
+just a note — i can't log in from a new device :(,account_access,False
+"fyi, very satisfied customer here — thank you!",positive,False
+urgent: i cancelled my plan but still got charged please.,billing_issue,False
+"hello, where is my refund? !!",billing_issue,False
+question: thed ark mode toggle broke the layout,technical_issue,False
+urgent: the video player won't load please.,technical_issue,False
+update: i'm writing a formal complaint letter :(,complaint_angry,False
+i can't log in from a new device,account_access,False
+question: very satisfied customer here — thank you! please.,positive,False
+please help — it would be great to have a pomodoro timer built in ugh.,feature_request,True
+issue: please add a dark theme for the mobile app too,feature_request,True
+"hi, i can't log in after the recent update please.",account_access,False
+"hey, please add an option to hide the sidebar :(",feature_request,True
+"hey, you've lost me sa a customer with this appalling service !!",complaint_angry,True
+issue: this is outrageous — i'm dnoe with your service!!! !!,complaint_angry,True
+"fyi, incredibly happy with the service — truly top tier :(",positive,False
+"fyi, my account is locked — please help.",account_access,False
+"hello, why is my bill higher than expected? pleas.e",billing_issue,False
+update: i didn't receive the password reset email :(,account_access,False
+"issue: the app is clean, fast, and just works perfectly !!",positive,False
+urgent: please reverse the charge on my account please.,billing_issue,False
+update: the support team wsa incredibly helpful and friendly :(,positive,False
+"hello, why is my bill higher than expected? !!",billing_issue,False
+"fyi, the new checkout flow has an extra unnecessary step please.",complaint_normal,False
+"hi, thank you — this solved my problem instantly!",positive,False
+update: you should be ashamed of yourselves!!! !!,complaint_angry,False
+the discount wasn't applied to my invoice ugh.,billing_issue,False
+urgent: i'm locked out of my account please.,account_access,False
+please help — the app is quite slow and laggy lately!,complaint_normal,False
+"hello, the tutorial wasn't very helpful for beginners asap!",complaint_normal,False
+urgent: i'm getting an error message on login please.,technical_issue,False
+update: the calendar integration is broken asap!,technical_issue,False
+update: the product keeps getting better every update thanks.,positive,False
+10 out of 10 would recommend to everyone.,positive,False
+question: thank you so much for the help — you're wonderful! :(,positive,False
+question: the user experience feels clunky asap!,complaint_normal,False
+just a note — i can't send messages — they just fail ugh.,technical_issue,False
+just a note — i'd love a feature to pin important messages!,feature_request,True
+"hi, this is absolutely ridiculous! i've been waiting weeks!.",complaint_angry,True
+update: this is outrageous — i'm done with your service!!! help!,complaint_angry,True
+please help — i have been overcharged by $20 !!,billing_issue,False
+question: your support is a JOKE! fix thisi mmediately! asap!,complaint_angry,False
+"hi, i should have gotten a lower rate please.",billing_issue,False
+update: i'm so impressed with how quickly you resolved my issue !!,positive,False
+question: the user experience feels clunky!,complaint_normal,False
+"hello, i'm going to dispute this charge with my bank.",complaint_angry,False
+can you add support forw ebp images? please.,feature_request,True
+update: the confirmation email never arrived :(,technical_issue,False
+just a note — please add a custom notification sound option help!,feature_request,True
+can't open attachments in the app!,technical_issue,False
+update: the multi-language support is lacking,complaint_normal,False
+"hey, you clearly don't care about your customers AT ALL help!",complaint_angry,False
+urgent: please add quick reply options for common responses please.,feature_request,True
+urgent: the app could use some polish in the settings page :(,complaint_normal,False
+"hey, the api erturns a 503 error asap!",technical_issue,False
+"hi, this is the LAST time i contact your useless support !!",complaint_angry,True
+"hey, the onboarding experience was confusing !!",complaint_normal,False
+"fyi, i got charged for a plan in ever signed up for !!",billing_issue,False
+please help — the performnace has degraded since last month,complaint_normal,False
+best customer support experience i've ever had ugh.,positive,False
+"hey, i feel the proudct has declined recently help!",complaint_normal,False
+"hi, the help section needs improvement.",complaint_normal,False
+please help — i'm genuinely delighted with the product.,positive,False
+"hi, the app could use some polish in the settings page please.",complaint_normal,False
+just a note — i've seen some incosnistencies in the data displayed ugh.,complaint_normal,False
+it would be really helpful to have keyborad shortcuts!,feature_request,True
+issue: you've lost me as a customer with this appalling service help!,complaint_angry,True
+"hi, just wanted to say — excellent work! keep it up! thanks.",positive,False
