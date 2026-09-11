@@ -1,0 +1,140 @@
+==== EVALUATION SUMMARY ====
+
+Evaluation file: data/evaluation_set.csv
+Total labelled examples: 100
+Evaluation style: manually curated synthetic Twitter-style support messages
+Model: SentenceTransformer all-MiniLM-L6-v2 + KNN cosine similarity
+Escalation: rule-based engine with anger, confidence, feature-request, billing-risk, and unknown-intent rules
+
+The evaluation set contains 100 rows: 54 escalation-positive cases and 46 escalation-negative cases.
+
+==== CLASS DISTRIBUTION ====
+
+Intent distribution:
+billing_issue       40 examples   40%
+technical_issue     13 examples   13%
+account_access      12 examples   12%
+complaint_angry     10 examples   10%
+complaint_normal    10 examples   10%
+feature_request      8 examples    8%
+positive             7 examples    7%
+
+This distribution is intentionally imbalanced. Billing issues are 40% of the set because money-related cases are common and high-risk in customer support. The imbalance makes accuracy easier to inflate: a model that over-predicts billing can look stronger than it really is.
+
+Escalation label distribution:
+YES                 54 examples   54%
+NO                  46 examples   46%
+
+==== BASELINE COMPARISON ====
+
+Model                                  Intent Accuracy    Escalation F1
+Dummy majority baseline                 40.0%              0.70
+Keyword matching baseline               66.0%              0.74
+Embedding KNN model                     78.0%              0.85
+
+Dummy baseline definition:
+Always predicts billing_issue for intent. For escalation, it predicts YES for billing_issue, complaint_angry, and feature_request style messages using simple label priors.
+
+Keyword baseline definition:
+Uses direct keyword matching for words such as refund, charge, login, password, crash, bug, angry words, feature, add, thanks, and love. It fails on paraphrases and mixed-intent messages.
+
+Embedding KNN model definition:
+Encodes each message with all-MiniLM-L6-v2, compares it against labelled training examples with cosine similarity, and assigns the intent from the nearest neighbours.
+
+==== INTENT CLASSIFICATION METRICS ====
+
+Overall accuracy: 78 / 100 = 78.0%
+Macro precision: 75.1%
+Macro recall:    75.7%
+Macro F1:        75.1%
+Weighted F1:     78.6%
+
+Per-intent metrics:
+
+Intent              Precision   Recall   F1      Support
+billing_issue       0.85        0.85     0.85    40
+technical_issue     0.82        0.69     0.75    13
+account_access      0.90        0.75     0.82    12
+complaint_angry     0.64        0.70     0.67    10
+complaint_normal    0.64        0.70     0.67    10
+feature_request     0.67        0.75     0.71     8
+positive            0.75        0.86     0.80     7
+
+Strongest class:
+billing_issue performed best because it has the most examples and repeated lexical patterns such as refund, invoice, charge, card, renewal, and payment.
+
+Weakest classes:
+complaint_angry and complaint_normal were the hardest to separate because some angry complaints mention billing or technical symptoms, while some normal complaints use negative words without requiring escalation.
+
+==== ASCII CONFUSION MATRIX ====
+
+Rows are true labels. Columns are predicted labels.
+
+                  Predicted
+True Label        BILL  TECH  ACCT  ANGR  NORM  FEAT  POS   Row Total
+billing_issue       34     1     0     3     1     0    1      40
+technical_issue      2     9     1     0     1     0    0      13
+account_access       1     1     9     0     0     1    0      12
+complaint_angry      2     0     0     7     1     0    0      10
+complaint_normal     1     0     0     1     7     1    0      10
+feature_request      0     0     0     0     1     6    1       8
+positive             0     0     0     0     0     1    6       7
+Column Total        40    11    10    11    11     9    8     100
+
+Correct predictions: 78
+Incorrect predictions: 22
+
+Most common confusions:
+1. billing_issue -> complaint_angry: angry money complaints sound like general complaints.
+2. technical_issue -> billing_issue: payment-screen and subscription errors include billing words.
+3. complaint_normal -> complaint_angry: negative tone can be mistaken for anger.
+4. account_access -> feature_request: access-management requests sometimes look like feature asks.
+5. feature_request -> positive: polite feature requests can resemble compliments.
+
+==== ESCALATION METRICS ====
+
+Confusion matrix for escalation:
+
+True Positive  (TP): 47
+False Positive (FP):  9
+True Negative  (TN): 37
+False Negative (FN):  7
+Total:             100
+
+Positive labels: TP + FN = 54
+Negative labels: TN + FP = 46
+Predicted positive: TP + FP = 56
+Predicted negative: TN + FN = 44
+
+Precision: TP / (TP + FP) = 47 / 56 = 0.839
+Recall:    TP / (TP + FN) = 47 / 54 = 0.870
+F1:        2PR / (P + R)  = 0.854
+Accuracy:  (TP + TN) / 100 = 84.0%
+
+Interpretation:
+The escalation system is stronger than intent classification because escalation uses explicit rules in addition to model confidence. False negatives are the main risk because a missed escalation can leave a frustrated or blocked customer with an automated response.
+
+==== CONFIDENCE DISTRIBUTION ====
+
+Confidence score source:
+The confidence value is the mean cosine similarity of the winning nearest-neighbour intent group. It is not a calibrated probability.
+
+Confidence bins:
+
+Score Range      Examples   Correct   Accuracy
+0.30 - 0.49          12         5       41.7%
+0.50 - 0.59          18        11       61.1%
+0.60 - 0.74          31        25       80.6%
+0.75 - 0.89          29        27       93.1%
+0.90 - 1.00          10        10      100.0%
+
+Plot description:
+The confidence distribution is right-skewed, with most correct predictions between 0.65 and 0.90. Incorrect predictions cluster near the decision boundary from 0.45 to 0.65. A vertical threshold line at 0.60 separates uncertain predictions from normal automated handling. The plot supports using low confidence as an escalation signal, but it also shows that confidence should not be treated as a true probability.
+
+==== KEY TAKEAWAYS ====
+
+1. The model reaches 78.0% intent accuracy on the 100-row evaluation set.
+2. Escalation F1 is 0.854 because rule-based escalation catches most high-risk cases.
+3. Billing imbalance helps overall accuracy and should be disclosed.
+4. Complaint classes remain the most error-prone because tone and intent overlap.
+5. Confidence is useful for ranking uncertainty, but it is not calibrated.

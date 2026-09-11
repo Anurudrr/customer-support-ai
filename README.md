@@ -383,6 +383,17 @@ Reply:  "Thank you so much! We're really glad you're enjoying the service."
 
 ---
 
+## Attribution & Citations
+
+This project adapts and extends:
+- **GitHub:** https://github.com/Anurudrr/customer-support-ai
+- **What we kept:** Embedding + KNN architecture, rule-based escalation, template replies
+- **What we added:** Full evaluation report, failure analysis, honest limitations section
+
+See `reports/DECISION_LOG.md` for detailed attribution and adaptations.
+
+---
+
 ## License
 
 MIT — see [LICENSE](./LICENSE)
